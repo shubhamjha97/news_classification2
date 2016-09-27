@@ -1,8 +1,9 @@
 from os import listdir
-def load_files(loc, cat_str):
-    corpus=[]
-    for cat in cat_str:
-        for i in (listdir(loc + cat)):
-            corpus.append({'file':open((loc+cat+'/'+i), 'r'), 'category':cat})
-        #print cat+str(len(listdir(loc+cat)))
-    return corpus
+from bagofwords import BOW
+
+def load_files(location, cat_list):
+    for category in cat_list:
+        for file in (listdir(location + category)):
+            temp_file=open((location+category+'/'+file),'r')
+            BOW(temp_file,file,category)
+            temp_file.close()
