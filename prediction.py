@@ -4,11 +4,10 @@ from sklearn.metrics import accuracy_score
 
 #Train and cross validation
 
-def Model:
+class Model:
 
 	def __init__(self):
 		self.model=RandomForestClassifier(n_estimators=100)
-
 
 	def train_classifier(self, X, Y):
 		Xtrain, Xval, Ytrain, Yval=train_test_split(X,Y, train_size=0.7)
