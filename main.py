@@ -29,7 +29,7 @@ test_loc='/home/shubham/PycharmProjects/news_classifier/test_set/031.txt'
 
 #Load test files and run Bag of Words
 load_test_files(test_loc, test_table)
-Retrieve test data
+#Retrieve test data
 Xtest=test_table.return_test_data()
 
 #Make predictions
