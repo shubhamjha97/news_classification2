@@ -14,14 +14,14 @@ class table_pd:
 		self.table=self.table.append(temp_table)
 		self.table=self.table.fillna(0)
 		
-	def return_train_data():
+	def return_train_data(self):
 		Y=self.table['CATEGORY']
 		temp=self.table.drop('CATEGORY', 1)
 		temp=self.table.drop('FILENAME', 1)
 		X=self.table
 		return X,Y
 
-	def return_test_data():
+	def return_test_data(self):
 		temp=self.table.drop('CATEGORY', 1)
 		temp=self.table.drop('FILENAME', 1)
 		X=self.table
