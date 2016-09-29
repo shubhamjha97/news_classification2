@@ -6,6 +6,7 @@ from os import listdir
 import os
 from tqdm import tqdm
 import pandas as pd
+import MySQLdb
 stop=set(stopwords.words('english'))
 opset=set([' ', u"'s", '-', ',', '.'])
 porter_stemmer=PorterStemmer()
