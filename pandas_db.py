@@ -15,16 +15,19 @@ class table_pd:
 		self.table=self.table.fillna(0)
 		
 	def return_train_data(self):
-		Y=self.table['CATEGORY'].values
-		temp=self.table.drop('CATEGORY', 1)
-		temp=self.table.drop('FILENAME', 1)
-		X=self.table
+		temp_table=self.table[self.table['CATEGORY']!='TEST']
+		Y=temp_table['CATEGORY']
+		temp=temp_table.drop('CATEGORY', 1)
+		temp=temp_table.drop('FILENAME', 1)
+		X=temp
 		return X,Y
 
 	def return_test_data(self):
-		temp=self.table.drop('CATEGORY', 1)
-		temp=self.table.drop('FILENAME', 1)
-		X=self.table
+		temp_table=self.table[self.table['CATEGORY']=='TEST']
+		temp=temp_table.drop('CATEGORY', 1)
+		temp=temp_table.drop('FILENAME', 1)
+		X=temp
+		#X=X[X['CATEGORY']=='TEST']
 		return X
 
 	#def return_sparse_mat(self):
