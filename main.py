@@ -1,9 +1,5 @@
-#from nltk.tokenize import word_tokenize
-#from os import listdir
-#import os
 from file_loader import load_files
 from file_loader import load_test_files
-#from tqdm import tqdm
 from prediction import Model
 from pandas_db import table_pd
 
@@ -29,11 +25,28 @@ test_loc='/home/shubham/PycharmProjects/news_classifier/test_set/031.txt'
 
 #Load test files and run Bag of Words
 load_test_files(test_loc, test_table)
+
 #Retrieve test data
 Xtest=test_table.return_test_data()
 
+colarrayX=[]
+
+for element in Xtrain.columns:
+	element=element.encode("utf-8")
+	colarrayX.append(element)
+
+#Temproary
+temp_file=open('/home/shubham/PycharmProjects/news_classifier/training_set/tempfile.txt','w')
+for x in colarrayX:
+	temp_file.write(x)
+	temp_file.write('\n')
+temp_file.close()
+
+Xtest=Xtest[colarrayX].values
+Xtrain=Xtrain[colarrayX].values
+
 #Make predictions
 mod=Model()
-mod.train_classifier(Xtrain, Ytrain)
-mod.make_predictions(Xtest)
 
+#mod.train_classifier(Xtrain, Ytrain)
+#mod.make_predictions(Xtest)

@@ -15,7 +15,7 @@ class table_pd:
 		self.table=self.table.fillna(0)
 		
 	def return_train_data(self):
-		Y=self.table['CATEGORY']
+		Y=self.table['CATEGORY'].values
 		temp=self.table.drop('CATEGORY', 1)
 		temp=self.table.drop('FILENAME', 1)
 		X=self.table
