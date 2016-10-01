@@ -12,7 +12,7 @@ class Model:
 	def train_classifier(self, X, Y):
 		Xtrain, Xval, Ytrain, Yval=train_test_split(X,Y, train_size=0.7)
 		self.model.fit(Xtrain, Ytrain)
-		print "Cross validation score= " + str(accuracy_score(model.predict(Xval), Yval))
+		print "Cross validation score= " + str(accuracy_score(self.model.predict(Xval), Yval))
 
-	def make_predictions(Xpred):
+	def make_predictions(self, Xpred):
 		print 'Prediction= '+str(self.model.predict(Xpred))

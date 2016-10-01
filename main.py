@@ -2,6 +2,7 @@ from file_loader import load_files
 from file_loader import load_test_files
 from prediction import Model
 from pandas_db import table_pd
+from sklearn.preprocessing import LabelEncoder
 
 #Pickle trained classifier!!!!!!!!!!!!!!!!!!!!!!!!
 #Create empty table
@@ -29,24 +30,16 @@ load_test_files(test_loc, test_table)
 #Retrieve test data
 Xtest=test_table.return_test_data()
 
-colarrayX=[]
+for_encoding=['FILENAME','CATEGORY']
 
-for element in Xtrain.columns:
-	element=element.encode("utf-8")
-	colarrayX.append(element)
+le=LabelEncoder()
+for i in for_encoding:
+	Xtrain[i]=le.fit_transform(Xtrain[i])
+	Xtest[i]=le.fit_transform(Xtest[i])
 
-#Temproary
-temp_file=open('/home/shubham/PycharmProjects/news_classifier/training_set/tempfile.txt','w')
-for x in colarrayX:
-	temp_file.write(x)
-	temp_file.write('\n')
-temp_file.close()
-
-Xtest=Xtest[colarrayX].values
-Xtrain=Xtrain[colarrayX].values
-
+Xtrain=Xtrain.as_matrix()
+Xtest=Xtest.as_matrix()
 #Make predictions
 mod=Model()
-
-#mod.train_classifier(Xtrain, Ytrain)
-#mod.make_predictions(Xtest)
+mod.train_classifier(Xtrain, Ytrain)
+mod.make_predictions(Xtest)
