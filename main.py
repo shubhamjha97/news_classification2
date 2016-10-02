@@ -6,8 +6,6 @@ from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import pandas as pd
 
-#Pickle trained classifier!!!!!!!!!!!!!!!!!!!!!!!!
-
 #Create empty table
 train_table=table_pd()
 test_table=table_pd()
@@ -17,7 +15,7 @@ loc="/home/shubham/PycharmProjects/news_classifier/training_set/"
 loc_bow="/home/shubham/PycharmProjects/news_classifier/bag_of_words/"
 cat_str=['sport', 'business', 'tech', 'entertainment', 'politics']
 #Prediction file path
-test_loc='/home/shubham/PycharmProjects/news_classifier/test_set/406.txt'
+test_loc='/home/shubham/PycharmProjects/news_classifier/test_set/148.txt'
 
 #Load train files and run Bag of Words
 load_train_files(loc, cat_str, train_table, test_table) #create train_table, insert test columns, delete test rows

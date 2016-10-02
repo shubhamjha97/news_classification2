@@ -27,7 +27,6 @@ class table_pd:
 		temp=temp.drop('FILENAME', 1)
 		X=temp
 		X=X.drop_duplicates()
-		print X.shape
 		return X
 
 	#def return_sparse_mat(self):

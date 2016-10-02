@@ -2,13 +2,14 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import accuracy_score
+import cPickle
 
 #Train and cross validation
 
 class Model:
 
 	def __init__(self, le):
-		self.model=KNeighborsClassifier(n_neighbors=8)
+		self.model=RandomForestClassifier(n_estimators=100)
 		self.le=le
 
 	def train_classifier(self, X, Y):
