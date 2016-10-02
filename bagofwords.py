@@ -23,7 +23,6 @@ def BOW(file,filename,category, train_table, test_table):
     modified_filename=category+filename
     train_table.insert_table(word_dict,modified_filename,category)
     test_table.insert_table(word_dict,modified_filename,category)
-    #print pd.Series(word_dict).sort_values(ascending=False)
 
 def BOW_test_data(file,test_table, train_table):
     word_dict = {}

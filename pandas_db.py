@@ -3,7 +3,6 @@ import pandas as pd
 empty=[]
 class table_pd:
 
-
 	def __init__(self):
 		self.table=pd.DataFrame(columns=empty)
 
@@ -18,16 +17,17 @@ class table_pd:
 		temp_table=self.table[self.table['CATEGORY']!='TEST']
 		Y=temp_table['CATEGORY']
 		temp=temp_table.drop('CATEGORY', 1)
-		temp=temp_table.drop('FILENAME', 1)
+		temp=temp.drop('FILENAME', 1)
 		X=temp
 		return X,Y
 
 	def return_test_data(self):
 		temp_table=self.table[self.table['CATEGORY']=='TEST']
 		temp=temp_table.drop('CATEGORY', 1)
-		temp=temp_table.drop('FILENAME', 1)
+		temp=temp.drop('FILENAME', 1)
 		X=temp
-		#X=X[X['CATEGORY']=='TEST']
+		X=X.drop_duplicates()
+		print X.shape
 		return X
 
 	#def return_sparse_mat(self):

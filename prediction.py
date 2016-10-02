@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 class Model:
 
 	def __init__(self, le):
-		self.model=RandomForestClassifier(n_estimators=100)
+		self.model=KNeighborsClassifier(n_neighbors=8)
 		self.le=le
 
 	def train_classifier(self, X, Y):
