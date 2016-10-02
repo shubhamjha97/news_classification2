@@ -7,8 +7,9 @@ from sklearn.metrics import accuracy_score
 
 class Model:
 
-	def __init__(self):
+	def __init__(self, le):
 		self.model=RandomForestClassifier(n_estimators=100)
+		self.le=le
 
 	def train_classifier(self, X, Y):
 		Xtrain, Xval, Ytrain, Yval=train_test_split(X,Y, train_size=0.7)
@@ -16,4 +17,4 @@ class Model:
 		print "Cross validation score= " + str(accuracy_score(self.model.predict(Xval), Yval))
 
 	def make_predictions(self, Xpred):
-		print 'Prediction= '+str(self.model.predict(Xpred))
+		print 'Prediction= '+str(self.le.inverse_transform(self.model.predict(Xpred)))

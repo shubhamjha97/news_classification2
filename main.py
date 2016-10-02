@@ -27,31 +27,19 @@ load_test_files(test_loc, test_table, train_table)
 Xtrain, Ytrain=train_table.return_train_data()
 #Retrieve test data
 Xtest=test_table.return_test_data()
-#sh=Xtest.shape
+
 #Encoding categorical variables
 for_encoding=['CATEGORY']
 le=LabelEncoder()
 Ytrain=le.fit_transform(Ytrain)
 Xtrain=Xtrain.drop('CATEGORY', 1)
 Xtest=Xtest.drop('CATEGORY', 1)
-print 'FILENAME' in Xtrain.columns
+#print 'FILENAME' in Xtrain.columns
 
 print pd.Series(Ytrain).value_counts()
-#for i in for_encoding:
-#	Ytrain[i]=le.fit_transform(Ytrain[i])
-#	Xtest[i]=le.fit_transform(Xtest[i])
-
-#for i in range(0,6):
-#	print Xtest[Xtest['CATEGORY']==i].shape
-
-#Xtest=Xtest[Xtest['CATEGORY']==0]
-
-#Xtrain=Xtrain.as_matrix()
-#Xtest=Xtest.as_matrix()
 
 #Make predictions
-mod=Model()
+mod=Model(le)
 mod.train_classifier(Xtrain, Ytrain)
-#print Xtest.shape#.reshape(-1,sh[1])
-#print Xtrain.shape
 mod.make_predictions(Xtest)
+
